@@ -6,6 +6,8 @@
 [node name="Menu" type="Node2D"]
 script = ExtResource("1_btov7")
 
+[node name="BG" parent="." instance=ExtResource("2_kg2y6")]
+
 [node name="Start" type="Button" parent="."]
 offset_left = 834.0
 offset_top = 710.0
@@ -13,6 +15,16 @@ offset_right = 1009.0
 offset_bottom = 778.0
 theme_override_font_sizes/font_size = 40
 text = "strat
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Start2" type="Button" parent="."]
+offset_left = 834.0
+offset_top = 632.0
+offset_right = 1009.0
+offset_bottom = 700.0
+theme_override_font_sizes/font_size = 40
+text = "server
 "
 metadata/_edit_use_anchors_ = true
 
@@ -45,8 +57,21 @@ theme_override_font_sizes/font_size = 190
 text = "Mafia"
 metadata/_edit_use_anchors_ = true
 
-[node name="BG" parent="." instance=ExtResource("2_kg2y6")]
+[node name="HostButton" type="Button" parent="."]
+offset_left = 99.0
+offset_top = 810.0
+offset_right = 147.0
+offset_bottom = 842.0
+text = "1"
+
+[node name="JoinButton" type="Button" parent="."]
+offset_left = 99.0
+offset_top = 850.0
+offset_right = 147.0
+offset_bottom = 882.0
+text = "2"
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Start2" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Setting" to="." method="_on_setting_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

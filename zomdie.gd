@@ -1,3 +1,4 @@
+# zombie.gd
 extends CharacterBody2D
 
 @export var speed: float = 150.0
@@ -6,9 +7,11 @@ extends CharacterBody2D
 @export var jump_force: float = 400.0
 @export var attack_damage: int = 4
 @export var attack_cooldown: float = 1.0
+@export var max_health: int = 100  # 👈 Добавляем здоровье
 
 var player: Node2D = null
 var can_attack: bool = true
+var health: int = max_health  # 👈 Текущее здоровье
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 var attack_timer: Timer
@@ -27,6 +30,9 @@ func _ready():
 	attack_timer.wait_time = attack_cooldown
 	add_child(attack_timer)
 	attack_timer.timeout.connect(_on_attack_timer_timeout)
+
+	# Добавляем зомби в группу "enemy", чтобы пули его распознавали
+	add_to_group("enemy")
 
 func _physics_process(delta):
 	if player == null:
@@ -87,3 +93,15 @@ func _attack_player():
 
 func _on_attack_timer_timeout():
 	can_attack = true
+
+# 👇 НОВЫЙ МЕТОД: получение урона
+func take_damage(amount: int):
+	health -= amount
+	print("🧟 Зомби получил урон: ", amount, ". Осталось здоровья: ", health)
+
+	if health <= 0:
+		die()
+
+func die():
+	print("💀 Зомби умер!")
+	queue_free()  # Уничтожаем зомбиd

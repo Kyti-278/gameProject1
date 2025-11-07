@@ -159,6 +159,7 @@ radius = 149.084
 size = Vector2(25, 32)
 
 [node name="Zomdie" type="CharacterBody2D"]
+position = Vector2(546, 310)
 script = ExtResource("1_0vpap")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -168,9 +169,8 @@ shape = SubResource("CapsuleShape2D_re7dk")
 position = Vector2(3.55271e-15, -1)
 scale = Vector2(0.0547485, 0.0479126)
 sprite_frames = SubResource("SpriteFrames_oedl4")
-animation = &"Idle"
+animation = &"Death"
 autoplay = "Idle"
-frame_progress = 0.546235
 offset = Vector2(18.2653, -396.555)
 
 [node name="Detector" type="Area2D" parent="."]
